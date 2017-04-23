@@ -35,7 +35,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".IPConfig" />
-        <activity android:name=".PrimaryActivity"></activity>
+        <activity android:name=".PrimaryActivity" />
+        <activity android:name=".SettingsActivty"></activity>
     </application>
 
 </manifest>

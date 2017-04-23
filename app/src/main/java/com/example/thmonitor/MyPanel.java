@@ -69,6 +69,14 @@ public class MyPanel extends View {
         return currentTemp;
     }
 
+    public void refreshValue(float min, float norm) {
+        minTempRange = min;
+        normTempRange = norm;
+        maxTempRange = 80f - min - norm;
+        normTempStartAngle = minTempStartAngle + min * anglePerTemp + 1.5f;
+        maxTempStartAngle = 405 - maxTempRange * anglePerTemp;
+    }
+
     /**
      * 初始化函数
      * 创建画笔并设置属性

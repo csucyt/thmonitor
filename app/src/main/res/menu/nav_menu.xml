@@ -18,6 +18,11 @@
             android:title="IP Connect"
             android:icon="@mipmap/ipconnect"/>
 
+        <item
+            android:id="@+id/my_settings"
+            android:title="Settings"
+            android:icon="@mipmap/settings"/>
+
     </group>
 
 </menu>

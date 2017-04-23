@@ -1,6 +1,8 @@
 package com.example.thmonitor;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,12 @@ public class PrimaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primary);
+
+        SharedPreferences.Editor editor = getSharedPreferences("Temp", MODE_PRIVATE).edit();
+        editor.putFloat("minRange", 20);
+        editor.putFloat("normRange", 30);
+        editor.apply();
+
 
         ImageView primaryImage = (ImageView)findViewById(R.id.primary_gif);
         Glide.with(this).load(R.drawable.primary).into(primaryImage);

@@ -31,12 +31,6 @@ public class LineChartActivity extends AppCompatActivity implements View.OnClick
 
     private boolean flag;
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        return true;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +74,10 @@ public class LineChartActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(LineChartActivity.this, MainActivity.class);
+                intent.putExtra("visit", flag);
                 startActivity(intent);
+                LineChartActivity.this.finish();
                 break;
             case R.id.line_fill: {
                 List<ILineDataSet> sets = lineChart.getData()

@@ -1,5 +1,6 @@
 package com.example.thmonitor;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -109,6 +111,26 @@ public class MainActivity extends AppCompatActivity {
                         LineChartFragment lineChartFragment = new LineChartFragment();
                         transaction.replace(R.id.fragment_layout, lineChartFragment);
                         break;
+                    case R.id.ip_connect:
+                        new AlertDialog.Builder(MainActivity.this).setTitle("将跳转至IP设置界面")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(MainActivity.this, IPConfig.class);
+                                        startActivity(intent);
+                                        MainActivity.this.finish();
+                                    }
+                                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
+                        break;
+                    case R.id.my_settings:
+                        Intent intent = new Intent(MainActivity.this, SettingsActivty.class);
+                        startActivity(intent);
+                        break;
                     default:
                         break;
                 }
@@ -131,15 +153,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
-    /**
-     *  创建数据库
-     */
-    private void createDataBase()
-    {
-        Connector.getDatabase();
-    }
-
 
 
 }

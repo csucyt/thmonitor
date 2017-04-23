@@ -4,6 +4,7 @@ package com.example.thmonitor;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,7 +28,13 @@ public class PanelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.panel_fragment, container, false);
+
+        SharedPreferences pref = getContext().getSharedPreferences("Temp", Context.MODE_PRIVATE);
+        float minRange = pref.getFloat("minRange", 20);
+        float normRange = pref.getFloat("normRange", 30);
+
         MyPanel myPanel = (MyPanel)view.findViewById(R.id.my_panel);
+        myPanel.refreshValue(minRange, normRange);
         TextView tempText = (TextView)view.findViewById(R.id.current_temp);
         TextView timeText = (TextView)view.findViewById(R.id.current_time);
         boolean flag = getActivity().getIntent().getExtras().getBoolean("visit");

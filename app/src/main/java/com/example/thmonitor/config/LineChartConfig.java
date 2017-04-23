@@ -75,7 +75,7 @@ public class LineChartConfig {
     public void lineChartInit(boolean mFlag) {
 
         fromWhatTime();
-//        setFlag(flag);
+        lineChart.clear();
         lineChart.getDescription().setEnabled(mFlag);
         lineChart.setTouchEnabled(mFlag);
         lineChart.setDragEnabled(mFlag);
@@ -138,6 +138,14 @@ public class LineChartConfig {
 
 
     private void setSocketData(int type) {
+
+        if(type == TYPE_DAY) {
+            increase = 10;
+        } else if(type == TYPE_WEEK) {
+            increase = 60;
+        } else if(type == TYPE_MONTH) {
+            increase = 12 * 60;
+        }
 
         LineData data = lineChart.getData();
         if(data == null) {
@@ -264,6 +272,8 @@ public class LineChartConfig {
         xAxis.setDrawGridLines(false);
         xAxis.setTextColor(Color.BLACK);
         xAxis.setGranularity((float) increase);
+        xAxis.resetAxisMaximum();
+        xAxis.resetAxisMinimum();
         xAxis.setAxisMaximum(now + 24 * hour_div);
         xAxis.setAxisMinimum(from);
         xAxis.setValueFormatter(new IAxisValueFormatter() {

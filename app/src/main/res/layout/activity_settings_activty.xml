@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.thmonitor.SettingsActivty"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <CheckBox
+        android:id="@+id/dialog_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示LineChartActivity对话框"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:divider="@drawable/line"
+        android:showDividers="beginning|end"
+        android:layout_marginTop="15dp">
+
+        <EditText
+            android:id="@+id/min_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="低温范围"
+            android:layout_marginTop="10dp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/norm_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="正常温度范围"
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/temp_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

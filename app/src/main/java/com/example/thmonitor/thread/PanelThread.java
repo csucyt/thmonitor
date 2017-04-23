@@ -44,7 +44,8 @@ public class PanelThread implements Runnable {
                     @Override
                     public void run() {
                         tempText.setText(temp.getTemp() + "℃");
-                        timeText.setText(temp.getYear() + "." + temp.getMinute() + "." + temp.getDay());
+                        timeText.setText(temp.getYear() + "." + temp.getMonth() + "."
+                                + temp.getDay() + " " + temp.getHour() + ":" + temp.getMinute());
                         myPanel.setCurrentTemp(temp.getTemp());
                         myPanel.invalidate();
                     }
