@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/plane_item"
+            android:title="Plane"
+            android:icon="@mipmap/plane"/>
+
+        <item
+            android:id="@+id/linechart_item"
+            android:title="LineChart"
+            android:icon="@mipmap/timeline"/>
+
+        <item
+            android:id="@+id/ip_connect"
+            android:title="IP Connect"
+            android:icon="@mipmap/ipconnect"/>
+
+    </group>
+
+</menu>

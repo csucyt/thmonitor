@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="core-1.3.2">
+    <CLASSES>
+      <root url="file://D:/SoftWare/adt-bundle-windows-x86_64-20140321/sdk/.android/build-cache/0bbb5ad8cb23f769e84b6be598c5f20f05eb33e1/output/res" />
+      <root url="jar://D:/SoftWare/adt-bundle-windows-x86_64-20140321/sdk/.android/build-cache/0bbb5ad8cb23f769e84b6be598c5f20f05eb33e1/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.litepal.android/core/1.3.2/f8457625e38f5d86bcdacf8b3b1a11535c7730fe/core-1.3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
