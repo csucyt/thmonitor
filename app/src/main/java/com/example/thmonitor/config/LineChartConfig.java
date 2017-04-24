@@ -192,6 +192,8 @@ public class LineChartConfig {
 
                 lineChart.invalidate();
 
+            } else {
+                data.clearValues();
             }
 
         } else if(type == TYPE_WEEK) {

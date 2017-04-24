@@ -39,7 +39,7 @@ public class PanelThread implements Runnable {
     public void run() {
         try {
             while(true) {
-                final Temperature temp = DataSupport.findFirst(Temperature.class);
+                final Temperature temp = DataSupport.findLast(Temperature.class);
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.thmonitor.db.Temperature;
+
+import org.litepal.crud.DataSupport;
 
 public class PrimaryActivity extends AppCompatActivity {
 
@@ -22,10 +25,14 @@ public class PrimaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primary);
 
-        SharedPreferences.Editor editor = getSharedPreferences("Temp", MODE_PRIVATE).edit();
-        editor.putFloat("minRange", 20);
-        editor.putFloat("normRange", 30);
-        editor.apply();
+        SharedPreferences pref = getSharedPreferences("Temp", MODE_PRIVATE);
+        float minRange = pref.getFloat("minRange", 20);
+        float normRange = pref.getFloat("normRange", 30);
+
+        float minTemp = -20 + minRange;
+        float normTemp = -20 + minRange + normRange;
+
+        Temperature temp = DataSupport.findLast(Temperature.class);
 
 
         ImageView primaryImage = (ImageView)findViewById(R.id.primary_gif);
@@ -33,6 +40,14 @@ public class PrimaryActivity extends AppCompatActivity {
 
         feelButton = (Button)findViewById(R.id.feel_btn);
         hostIPText = (TextView)findViewById(R.id.host_ip_text);
+
+        if(temp.getTemp() < minTemp) {
+            feelButton.setText("当前温度过低");
+        } else if(temp.getTemp() < normTemp) {
+            feelButton.setText("当前温度舒适");
+        } else {
+            feelButton.setText("当前温度过高");
+        }
 
         final boolean flag = getIntent().getExtras().getBoolean("visit");
         if(!flag) {
