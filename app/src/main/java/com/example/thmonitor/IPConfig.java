@@ -33,12 +33,25 @@ public class IPConfig extends AppCompatActivity implements OnClickListener {
         @Override
         public void onConnect(SocketTransceiver transceiver) {
             Connector.getDatabase();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while(true) {
+                        send();
+                        try {
+                            Thread.sleep(6000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }).start();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
                     Toast.makeText(IPConfig.this, "Connect", Toast.LENGTH_SHORT).show();
                     refreshUI(false);
-                    send();
+                    //send();
                     Intent intent = new Intent(IPConfig.this, PrimaryActivity.class);
                     intent.putExtra("visit", false);
                     startActivity(intent);
@@ -78,7 +91,9 @@ public class IPConfig extends AppCompatActivity implements OnClickListener {
                         (Float.parseFloat(words[2]) - 1) * 1440;
                 temp.setTimeFlag(String.valueOf(timeFlag));
                 temp.save();
+
             }
+
 
         }
 
