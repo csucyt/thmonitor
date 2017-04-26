@@ -1,5 +1,7 @@
 package com.example.thmonitor;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thmonitor.db.Temperature;
@@ -24,8 +27,16 @@ public class IPConfig extends AppCompatActivity implements OnClickListener {
 
     private EditText ipEditText;
     private EditText portEditText;
+    private TextView helpText;
     private Button connectButton;
     private Button visitButton;
+    private Button helpButton;
+
+    private String help_text = "【帮助】\n" +
+            "该款软件提供两种访问模式：\n" +
+            "·连接远程服务器模式（CONNECT）：使用该模式你能使用软件的全部功能，例如数据分析等。用户需要输入服务器的IP地址以及相应的端口，目前该网络通信只支持局域网内通信。\n" +
+            "·访问模式(VISIT)：该模式主要为你提供软件功能的大体展示，其中所有的数据为随机生成，并没有任何实际意义。";
+    private boolean help_flag = false;
 
     private Handler handler = new Handler(Looper.getMainLooper());
 
@@ -39,7 +50,7 @@ public class IPConfig extends AppCompatActivity implements OnClickListener {
                     while(true) {
                         send();
                         try {
-                            Thread.sleep(6000);
+                            Thread.sleep(1000 * 60);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -118,9 +129,12 @@ public class IPConfig extends AppCompatActivity implements OnClickListener {
         portEditText = (EditText)findViewById(R.id.port_edit_text);
         connectButton = (Button)findViewById(R.id.connect_btn);
         visitButton = (Button)findViewById(R.id.visit_btn);
+        helpButton = (Button)findViewById(R.id.help_btn);
+        helpText = (TextView)findViewById(R.id.help_text);
 
         connectButton.setOnClickListener(this);
         visitButton.setOnClickListener(this);
+        helpButton.setOnClickListener(this);
 
         refreshUI(true);
 
@@ -139,6 +153,14 @@ public class IPConfig extends AppCompatActivity implements OnClickListener {
                 intent.putExtra("visit", true);
                 startActivity(intent);
                 IPConfig.this.finish();
+                break;
+            case R.id.help_btn:
+                help_flag = !help_flag;
+                if(help_flag) {
+                    helpText.setText(help_text);
+                } else {
+                    helpText.setText("");
+                }
                 break;
         }
     }

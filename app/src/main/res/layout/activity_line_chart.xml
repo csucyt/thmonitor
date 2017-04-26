@@ -53,20 +53,12 @@
 
     </RelativeLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/a_line_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/a_line_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="15dp">
-        </com.github.mikephil.charting.charts.LineChart>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_margin="15dp">
+    </com.github.mikephil.charting.charts.LineChart>
 
 
 </LinearLayout>

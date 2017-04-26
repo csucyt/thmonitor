@@ -5,40 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/swipe_refresh">
 
         <LinearLayout
-            android:id="@+id/anchor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00b2cc">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/anchor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:layout_margin="15dp"
-                android:text="每日气温趋势图"
-                android:textSize="25sp" />
+                android:background="#00b2cc">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:layout_margin="15dp"
+                    android:text="每日气温趋势图"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+
+            <com.github.mikephil.charting.charts.LineChart
+
+                android:id="@+id/line_chart"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp" />
+
+            <include layout="@layout/temp_statistics"/>
 
         </LinearLayout>
 
-        <com.github.mikephil.charting.charts.LineChart
 
-            android:id="@+id/line_chart"
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-        <include layout="@layout/temp_statistics"/>
-
-    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/float_button"
@@ -47,6 +56,5 @@
         android:layout_margin="16dp"
         app:layout_anchor="@+id/anchor"
         app:layout_anchorGravity="bottom|end"/>
-
 
 </android.support.design.widget.CoordinatorLayout>

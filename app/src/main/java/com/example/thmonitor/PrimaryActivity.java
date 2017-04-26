@@ -41,12 +41,16 @@ public class PrimaryActivity extends AppCompatActivity {
         feelButton = (Button)findViewById(R.id.feel_btn);
         hostIPText = (TextView)findViewById(R.id.host_ip_text);
 
-        if(temp.getTemp() < minTemp) {
-            feelButton.setText("当前温度过低");
-        } else if(temp.getTemp() < normTemp) {
-            feelButton.setText("当前温度舒适");
+        if(temp != null) {
+            if (temp.getTemp() < minTemp) {
+                feelButton.setText("当前温度过低");
+            } else if (temp.getTemp() < normTemp) {
+                feelButton.setText("当前温度舒适");
+            } else {
+                feelButton.setText("当前温度过高");
+            }
         } else {
-            feelButton.setText("当前温度过高");
+            feelButton.setText("当前温度舒适");
         }
 
         final boolean flag = getIntent().getExtras().getBoolean("visit");

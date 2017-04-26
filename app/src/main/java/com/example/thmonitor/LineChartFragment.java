@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,8 @@ public class LineChartFragment extends Fragment {
     private TextView maxTempTimeText;
     private TextView minTempTimeText;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     private LineChart lineChart;
     private boolean flag;
 
@@ -48,6 +51,9 @@ public class LineChartFragment extends Fragment {
         maxTempTimeText = (TextView)view.findViewById(R.id.max_temp_time);
         minTempText = (TextView)view.findViewById(R.id.min_temp);
         minTempTimeText = (TextView)view.findViewById(R.id.min_temp_time);
+        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_refresh);
+
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton)view.findViewById(R.id.float_button);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +98,25 @@ public class LineChartFragment extends Fragment {
             }
         });
 
+        refreshTempStatistics();
+
+        final LineChartConfig lineChartConfig = new LineChartConfig(lineChart);
+        lineChartConfig.setFlag(flag);
+        lineChartConfig.lineChartInit(false);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                lineChartConfig.lineChartInit(false);
+                refreshTempStatistics();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        return  view;
+    }
+
+    private void refreshTempStatistics() {
         if(flag) {
             minTempTimeText.setText("无");
             maxTempTimeText.setText("无");
@@ -119,10 +144,6 @@ public class LineChartFragment extends Fragment {
                 maxTempText.setText("无");
             }
         }
-
-        LineChartConfig lineChartConfig = new LineChartConfig(lineChart);
-        lineChartConfig.setFlag(flag);
-        lineChartConfig.lineChartInit(false);
-        return  view;
     }
+
 }

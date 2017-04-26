@@ -9,12 +9,30 @@
     android:orientation="vertical"
     android:layout_margin="10dp">
 
-    <CheckBox
-        android:id="@+id/dialog_check_box"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="显示LineChartActivity对话框"
-        android:textSize="20sp"/>
+        android:text="Settings"
+        android:gravity="center"
+        android:textSize="30sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/line"
+        android:showDividers="beginning"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp">
+
+        <CheckBox
+            android:id="@+id/dialog_check_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示LineChartActivity对话框"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +40,14 @@
         android:orientation="vertical"
         android:divider="@drawable/line"
         android:showDividers="beginning|end"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="温度设置"
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/min_edit_text"

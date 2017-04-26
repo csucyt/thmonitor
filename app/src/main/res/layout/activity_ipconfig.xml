@@ -7,47 +7,56 @@
     tools:context="com.example.thmonitor.IPConfig"
     android:orientation="vertical">
 
+
+    <Button
+        android:id="@+id/help_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/help"
+        android:layout_gravity="right"
+        android:layout_margin="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IP配置"
+        android:gravity="center"
+        android:textSize="30sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="15dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="主机IP"
-            android:textSize="18sp"
-            android:layout_marginRight="15dp"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/ip_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="192.168.191.1" />
+            android:hint="请输入服务器IP地址"
+            android:background="@drawable/edit"
+            android:drawableLeft="@mipmap/myip"
+            android:drawablePadding="15dp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="15dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="端口号"
-            android:textSize="18sp"
-            android:layout_marginRight="15dp"/>
 
         <EditText
             android:id="@+id/port_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="1234" />
+            android:hint="请输入服务器端口号"
+            android:background="@drawable/edit"
+            android:drawableLeft="@mipmap/port"
+            android:drawablePadding="15dp"/>
 
     </LinearLayout>
 
@@ -55,7 +64,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="20dp">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -64,11 +75,9 @@
 
             <Button
                 android:id="@+id/connect_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Connect"
-                android:layout_centerInParent="true"
-                android:padding="5dp"/>
+                android:text="Connect" />
 
         </RelativeLayout>
 
@@ -79,16 +88,28 @@
 
             <Button
                 android:id="@+id/visit_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Visit"
-                android:layout_centerInParent="true"
-                android:padding="5dp"/>
+                android:layout_alignParentLeft="true" />
 
         </RelativeLayout>
 
-
     </LinearLayout>
+
+    <ScrollView
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/help_text"
+            android:textColor="#ff4081"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
 
 
 </LinearLayout>
