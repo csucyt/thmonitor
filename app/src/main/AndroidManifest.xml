@@ -36,7 +36,8 @@
         </activity>
         <activity android:name=".IPConfig" />
         <activity android:name=".PrimaryActivity" />
-        <activity android:name=".SettingsActivty"></activity>
+        <activity android:name=".SettingsActivty" />
+        <activity android:name=".ListActivity"></activity>
     </application>
 
 </manifest>

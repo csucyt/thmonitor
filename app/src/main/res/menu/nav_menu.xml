@@ -19,6 +19,11 @@
             android:icon="@mipmap/ipconnect"/>
 
         <item
+            android:id="@+id/temp_list"
+            android:title="Temperature List"
+            android:icon="@mipmap/templist"/>
+
+        <item
             android:id="@+id/my_settings"
             android:title="Settings"
             android:icon="@mipmap/settings"/>

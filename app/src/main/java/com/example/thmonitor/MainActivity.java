@@ -131,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, SettingsActivty.class);
                         startActivity(intent);
                         break;
+                    case R.id.temp_list:
+                        Intent myIntent = new Intent(MainActivity.this, ListActivity.class);
+                        startActivity(myIntent);
+                        break;
                     default:
                         break;
                 }
