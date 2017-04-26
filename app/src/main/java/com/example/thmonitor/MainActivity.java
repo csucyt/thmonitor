@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.thmonitor.config.LineChartConfig;
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     public SwipeRefreshLayout swipeRefreshLayout;
     private DrawerLayout drawerLayout;
 
+    private boolean myFlag;
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -79,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        myFlag = getIntent().getExtras().getBoolean("visit");
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -132,8 +137,12 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.temp_list:
-                        Intent myIntent = new Intent(MainActivity.this, ListActivity.class);
-                        startActivity(myIntent);
+                        if(!myFlag) {
+                            Intent myIntent = new Intent(MainActivity.this, ListActivity.class);
+                            startActivity(myIntent);
+                        } else {
+                            Toast.makeText(MainActivity.this, "该模式下不能访问", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     default:
                         break;
